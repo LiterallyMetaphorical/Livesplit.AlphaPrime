@@ -1,7 +1,7 @@
 state("AlphaPrime")
 {
     int loading : 0x36B8D0;
-    string150 mission : 0x0030C52C, 0x1DC, 0x648, 0x28, 0x0;
+    string150 mission : 0x0030C23C, 0x18, 0x5A8, 0x28, 0x0;
 }
 
 init
@@ -37,13 +37,13 @@ onStart
 
 start
 {
-    return old.mission != current.mission && current.mission.Contains("l00");
+    return old.mission != current.mission && current.mission.Contains("l0i");
 }
 
 update
 { 
     //print(current.loading.ToString());
-    //print(current.mission);
+    print(current.mission);
 	vars.loading = current.loading != 256;
 }
 
@@ -53,9 +53,19 @@ isLoading
 }
 
 split 
-{ 	
-    return current.mission != old.mission;
-}	
+{ 	return   
+		(current.mission.Contains("l01")) && (current.mission != old.mission) || 
+        (current.mission.Contains("l02")) && (current.mission != old.mission) || 
+        (current.mission.Contains("l03")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l04")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l05")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l06")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l07")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l08")) && (current.mission != old.mission) ||
+        (current.mission.Contains("l09")) && (current.mission != old.mission) ||
+		(current.mission.Contains("l10")) && (current.mission != old.mission);
+	}		
+
 
 exit
 {
